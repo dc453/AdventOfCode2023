@@ -1,7 +1,12 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+import java.io.File
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+fun main(args: Array<String>) {
+
+    // Day 1
+    val day1Input = File("src/main/inputs/Day01.txt").readText()
+    val calibrationDocument = CalibrationDocument()
+    val day1Part1 = calibrationDocument.getCalibrationValue(day1Input)
+    println("Day 1, part 1: $day1Part1")
+
+
 }
