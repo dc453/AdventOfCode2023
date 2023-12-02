@@ -16,5 +16,7 @@ fun main(args: Array<String>) {
     val cubeBag = CubeBag(12, 13, 14)
     val day2Part1 = cubeBag.play(day2Input)
     println("Day 2, part 1: $day2Part1")
+    val day2Part2 = cubeBag.play(day2Input, true)
+    println("Day 2, part 2: $day2Part2")
 
 }
