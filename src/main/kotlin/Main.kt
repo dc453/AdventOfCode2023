@@ -19,4 +19,10 @@ fun main(args: Array<String>) {
     val day2Part2 = cubeBag.play(day2Input, true)
     println("Day 2, part 2: $day2Part2")
 
+    // Day 3
+    val day3Input = File("src/main/inputs/Day03.txt").readText()
+    val engineSchematic = EngineSchematic(day3Input)
+    val day3Part1 = engineSchematic.getTotal()
+    println("Day 3, part 1: $day3Part1")
+
 }
