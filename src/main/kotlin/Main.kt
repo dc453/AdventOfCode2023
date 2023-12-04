@@ -25,4 +25,10 @@ fun main(args: Array<String>) {
     val day3Part1 = engineSchematic.getTotal()
     println("Day 3, part 1: $day3Part1")
 
+    // Day 4
+    val day4Input = File("src/main/inputs/Day04.txt").readText()
+    val card = ScratchCard(day4Input)
+    val day4Part1 = card.getScore()
+    println("Day 4, part 1: $day4Part1")
+
 }
