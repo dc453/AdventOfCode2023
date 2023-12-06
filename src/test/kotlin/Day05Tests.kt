@@ -138,4 +138,11 @@ class Day05Tests {
         val result = almanac.getLowestLocation()
         assertEquals(35, result)
     }
+
+    @Test
+    fun `should get lowest possible location of seeds when parsing seed ranges`() {
+        val almanac = Almanac(input, true)
+        val result = almanac.getLowestLocation()
+        assertEquals(46, result)
+    }
 }
