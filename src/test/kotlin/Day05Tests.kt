@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import kotlin.math.exp
 
 class Day05Tests {
 
@@ -124,5 +123,19 @@ class Day05Tests {
             SeedMapProps(50, 98, 2)
         ))
         assertEquals(51, seedMap.getDestination(99))
+    }
+
+    @Test
+    fun `should get final location of seed`() {
+        val almanac = Almanac(input)
+        val result = almanac.getFinalLocation(79)
+        assertEquals(82, result)
+    }
+
+    @Test
+    fun `should get lowest possible location of seeds`() {
+        val almanac = Almanac(input)
+        val result = almanac.getLowestLocation()
+        assertEquals(35, result)
     }
 }

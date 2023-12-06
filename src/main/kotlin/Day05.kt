@@ -12,6 +12,7 @@ class Almanac(input: String) {
     val temperature = getSeedMap(inputParts[5])
     val humidity = getSeedMap(inputParts[6])
     val location = getSeedMap(inputParts[7])
+    private val operations = listOf(soil, fertilizer, water, light, temperature, humidity, location)
 
     private fun getSeedMap(from: String): SeedMap {
         val seedMapParts = from
@@ -23,6 +24,18 @@ class Almanac(input: String) {
                 SeedMapProps(map[0], map[1], map[2])
             }
         return SeedMap(seedMapParts)
+    }
+
+    fun getFinalLocation(seed: Int): Int {
+        val result = operations.fold(seed) { acc, next ->
+            next.getDestination(acc)
+        }
+        return result
+    }
+
+    fun getLowestLocation(): Int {
+        return seeds.map { getFinalLocation(it) }
+            .minOf { it }
     }
 
 }

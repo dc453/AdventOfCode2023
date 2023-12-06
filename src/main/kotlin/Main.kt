@@ -33,4 +33,11 @@ fun main(args: Array<String>) {
     println("Day 4, part 1: $day4Part1")
     println("Day 4, part 2: TODO")
 
+    // Day 5
+    val day5Input = File("src/main/inputs/Day05.txt").readText()
+    val almanac = Almanac(day5Input)
+    val day5Part1 = almanac.getLowestLocation()
+    println("Day 5, part 1: $day5Part1")
+    println("Day 5, part 2: TODO")
+
 }
