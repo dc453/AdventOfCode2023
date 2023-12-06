@@ -47,80 +47,82 @@ class Day05Tests {
     @Test
     fun `should know seed-to-soil values`() {
         val almanac = Almanac(input)
-        val expected = listOf(
-            SeedMap(50, 98, 2),
-            SeedMap(52, 50, 48)
-        )
+        val expected = SeedMap(listOf(
+            SeedMapProps(50, 98, 2),
+            SeedMapProps(52, 50, 48)
+        ))
         assertEquals(expected, almanac.soil)
     }
 
     @Test
     fun `should know soil-to-fertilizer values`() {
         val almanac = Almanac(input)
-        val expected = listOf(
-            SeedMap(0, 15, 37),
-            SeedMap(37, 52, 2),
-            SeedMap(39, 0, 15)
-        )
+        val expected = SeedMap(listOf(
+            SeedMapProps(0, 15, 37),
+            SeedMapProps(37, 52, 2),
+            SeedMapProps(39, 0, 15)
+        ))
         assertEquals(expected, almanac.fertilizer)
     }
 
     @Test
     fun `should know fertilizer-to-water values`() {
         val almanac = Almanac(input)
-        val expected = listOf(
-            SeedMap(49, 53, 8),
-            SeedMap(0, 11, 42),
-            SeedMap(42, 0, 7),
-            SeedMap(57, 7, 4)
-        )
+        val expected = SeedMap(listOf(
+            SeedMapProps(49, 53, 8),
+            SeedMapProps(0, 11, 42),
+            SeedMapProps(42, 0, 7),
+            SeedMapProps(57, 7, 4)
+        ))
         assertEquals(expected, almanac.water)
     }
 
     @Test
     fun `should know water-to-light values`() {
         val almanac = Almanac(input)
-        val expected = listOf(
-            SeedMap(88, 18, 7),
-            SeedMap(18, 25, 70)
-        )
+        val expected = SeedMap(listOf(
+            SeedMapProps(88, 18, 7),
+            SeedMapProps(18, 25, 70)
+        ))
         assertEquals(expected, almanac.light)
     }
 
     @Test
     fun `should know light-to-temperature values`() {
         val almanac = Almanac(input)
-        val expected = listOf(
-            SeedMap(45, 77, 23),
-            SeedMap(81, 45, 19),
-            SeedMap(68, 64, 13)
-        )
+        val expected = SeedMap(listOf(
+            SeedMapProps(45, 77, 23),
+            SeedMapProps(81, 45, 19),
+            SeedMapProps(68, 64, 13)
+        ))
         assertEquals(expected, almanac.temperature)
     }
 
     @Test
     fun `should know temperature-to-humidity values`() {
         val almanac = Almanac(input)
-        val expected = listOf(
-            SeedMap(0, 69, 1),
-            SeedMap(1, 0, 69)
-        )
+        val expected = SeedMap(listOf(
+            SeedMapProps(0, 69, 1),
+            SeedMapProps(1, 0, 69)
+        ))
         assertEquals(expected, almanac.humidity)
     }
 
     @Test
     fun `should know humidity-to-location values`() {
         val almanac = Almanac(input)
-        val expected = listOf(
-            SeedMap(60, 56, 37),
-            SeedMap(56, 93, 4)
-        )
+        val expected = SeedMap(listOf(
+            SeedMapProps(60, 56, 37),
+            SeedMapProps(56, 93, 4)
+        ))
         assertEquals(expected, almanac.location)
     }
 
     @Test
     fun `should get destination range of source`() {
-        val seedMap = SeedMap(50, 98, 2)
+        val seedMap = SeedMap(listOf(
+            SeedMapProps(50, 98, 2)
+        ))
         assertEquals(51, seedMap.getDestination(99))
     }
 }

@@ -13,26 +13,35 @@ class Almanac(input: String) {
     val humidity = getSeedMap(inputParts[6])
     val location = getSeedMap(inputParts[7])
 
-    private fun getSeedMap(from: String): List<SeedMap> {
-        return from
+    private fun getSeedMap(from: String): SeedMap {
+        val seedMapParts = from
             .lines()
             .drop(1)
             .map {
                 val map = it.split(" ")
                     .map { num -> num.toInt() }
-                SeedMap(map[0], map[1], map[2])
+                SeedMapProps(map[0], map[1], map[2])
             }
+        return SeedMap(seedMapParts)
     }
 
 }
 
-data class SeedMap(val destination: Int, val source: Int, val rangeLength: Int) {
+data class SeedMapProps(
+    val destination: Int,
+    val source: Int,
+    val rangeLength: Int
+)
 
-    private val destinationRange = (1..100).toMutableList()
+data class SeedMap(val maps: List<SeedMapProps>) {
+
+    private val destinationRange = (0..99).toMutableList()
 
     fun getDestination(from: Int): Int {
-        for (i in 0..<rangeLength) {
-            destinationRange[source + i] = destination + i
+        maps.forEach {
+            for (i in 0..<it.rangeLength) {
+                destinationRange[it.source + i] = it.destination + i
+            }
         }
         return destinationRange[from]
     }

@@ -12,6 +12,8 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    testImplementation("org.mockito:mockito-core:3.+")
+
 }
 
 tasks.test {
