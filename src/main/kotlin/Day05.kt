@@ -4,7 +4,7 @@ class Almanac(input: String) {
     val seeds = inputParts[0]
         .split(" ")
         .drop(1)
-        .map { it.toInt() }
+        .map { it.toLong() }
     val soil = getSeedMap(inputParts[1])
     val fertilizer = getSeedMap(inputParts[2])
     val water = getSeedMap(inputParts[3])
@@ -20,20 +20,20 @@ class Almanac(input: String) {
             .drop(1)
             .map {
                 val map = it.split(" ")
-                    .map { num -> num.toInt() }
+                    .map { num -> num.toLong() }
                 SeedMapProps(map[0], map[1], map[2])
             }
         return SeedMap(seedMapParts)
     }
 
-    fun getFinalLocation(seed: Int): Int {
+    fun getFinalLocation(seed: Long): Long {
         val result = operations.fold(seed) { acc, next ->
             next.getDestination(acc)
         }
         return result
     }
 
-    fun getLowestLocation(): Int {
+    fun getLowestLocation(): Long {
         return seeds.map { getFinalLocation(it) }
             .minOf { it }
     }
@@ -41,22 +41,21 @@ class Almanac(input: String) {
 }
 
 data class SeedMapProps(
-    val destination: Int,
-    val source: Int,
-    val rangeLength: Int
+    val destination: Long,
+    val source: Long,
+    val rangeLength: Long
 )
 
 data class SeedMap(val maps: List<SeedMapProps>) {
 
-    private val destinationRange = (0..99).toMutableList()
-
-    fun getDestination(from: Int): Int {
+    fun getDestination(from: Long): Long {
+        var foundDestination = -1L
         maps.forEach {
-            for (i in 0..<it.rangeLength) {
-                destinationRange[it.source + i] = it.destination + i
+            if (from >= it.source && from <= it.source + it.rangeLength) {
+                foundDestination = it.destination + from - it.source
             }
         }
-        return destinationRange[from]
+        return if (foundDestination >= 0) foundDestination else from
     }
 
 }

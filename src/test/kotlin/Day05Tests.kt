@@ -40,7 +40,7 @@ class Day05Tests {
     @Test
     fun `should know seed values`() {
         val almanac = Almanac(input)
-        assertEquals(listOf(79, 14, 55, 13), almanac.seeds)
+        assertEquals(listOf(79L, 14L, 55L, 13L), almanac.seeds)
     }
 
     @Test
