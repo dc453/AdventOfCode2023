@@ -28,4 +28,13 @@ class Almanac(input: String) {
 
 data class SeedMap(val destination: Int, val source: Int, val rangeLength: Int) {
 
+    private val destinationRange = (1..100).toMutableList()
+
+    fun getDestination(from: Int): Int {
+        for (i in 0..<rangeLength) {
+            destinationRange[source + i] = destination + i
+        }
+        return destinationRange[from]
+    }
+
 }

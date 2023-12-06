@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import kotlin.math.exp
 
 class Day05Tests {
 
@@ -115,5 +116,11 @@ class Day05Tests {
             SeedMap(56, 93, 4)
         )
         assertEquals(expected, almanac.location)
+    }
+
+    @Test
+    fun `should get destination range of source`() {
+        val seedMap = SeedMap(50, 98, 2)
+        assertEquals(51, seedMap.getDestination(99))
     }
 }
