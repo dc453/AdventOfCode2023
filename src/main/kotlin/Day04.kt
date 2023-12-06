@@ -2,6 +2,9 @@ import kotlin.math.pow
 
 class ScratchCard(private val cards: String) {
 
+    private val winningNumbers: MutableList<Int> = mutableListOf()
+    private var totalNumberOfCards = 0
+
     fun getWinningNumbers(card: String): List<Int> {
         val numbers = card.split(": ", " | ")
         return numbers[1]
@@ -20,17 +23,43 @@ class ScratchCard(private val cards: String) {
 
     fun getScore(): Int {
         var totalScore = 0
+        winningNumbers.forEach {
+            totalScore += 2.0.pow(it - 1).toInt()
+        }
+        return totalScore
+    }
+
+    fun getNumberOfWinnersPerCard(): List<Int> {
+        return winningNumbers.toList()
+    }
+
+    fun getTotalNumberOfCards(): Int {
+        val numOfEachCard = winningNumbers.toList().map { 1 }.toMutableList()
+        winningNumbers.forEachIndexed { index, num ->
+            for (i in 1..num) {
+                val newIndex = index + i
+                if (newIndex >= numOfEachCard.size) return@forEachIndexed
+                numOfEachCard[newIndex] += 1
+            }
+        }
+        return numOfEachCard.sum()
+    }
+
+    private fun calculateWinningNumbers() {
         cards.lines()
             .forEach { card ->
-                val winningNums = getWinningNumbers(card)
-                val drawnNums = getDrawnNumbers(card)
+                if (card.isEmpty()) return@forEach
+
                 var winningNumsFound = 0
-                winningNums.forEach {
-                    if (drawnNums.contains(it)) winningNumsFound++
+                getWinningNumbers(card).forEach {
+                    if (getDrawnNumbers(card).contains(it)) winningNumsFound++
                 }
-                totalScore += 2.0.pow(winningNumsFound - 1).toInt()
+                winningNumbers.add(winningNumsFound)
             }
-        return totalScore
+    }
+
+    init {
+        calculateWinningNumbers()
     }
 
 }
