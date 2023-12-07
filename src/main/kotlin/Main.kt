@@ -41,4 +41,10 @@ fun main(args: Array<String>) {
 //    println("Day 5, part 2: $day5Part2")
     println("Day 5, part 2: TODO")
 
+    // Day 6
+    val day6Input = File("src/main/inputs/Day06.txt").readText()
+    val races = BoatRaces(day6Input)
+    val day6Part1 = races.getMarginOfError()
+    println("Day 6, part 1: $day6Part1")
+
 }
