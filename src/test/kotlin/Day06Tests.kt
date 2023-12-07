@@ -32,4 +32,12 @@ class Day06Tests {
         assertEquals(288, result)
     }
 
+    @Test
+    fun `should calculate margin of error when kerning fix enabled`() {
+        val boatRaces = BoatRaces("Time:      7  15   30\n" +
+                "Distance:  9  40  200", true)
+        val result = boatRaces.getMarginOfError()
+        assertEquals(71503, result)
+    }
+
 }

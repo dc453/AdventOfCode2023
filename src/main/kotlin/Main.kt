@@ -43,8 +43,9 @@ fun main(args: Array<String>) {
 
     // Day 6
     val day6Input = File("src/main/inputs/Day06.txt").readText()
-    val races = BoatRaces(day6Input)
-    val day6Part1 = races.getMarginOfError()
+    val day6Part1 = BoatRaces(day6Input).getMarginOfError()
     println("Day 6, part 1: $day6Part1")
+    val day6Part2 = BoatRaces(day6Input, true).getMarginOfError()
+    println("Day 6, part 1: $day6Part2")
 
 }
