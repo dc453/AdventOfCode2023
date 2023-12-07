@@ -46,6 +46,6 @@ fun main(args: Array<String>) {
     val day6Part1 = BoatRaces(day6Input).getMarginOfError()
     println("Day 6, part 1: $day6Part1")
     val day6Part2 = BoatRaces(day6Input, true).getMarginOfError()
-    println("Day 6, part 1: $day6Part2")
+    println("Day 6, part 2: $day6Part2")
 
 }
