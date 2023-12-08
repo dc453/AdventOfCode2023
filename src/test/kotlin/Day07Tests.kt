@@ -97,13 +97,27 @@ class Day07Tests {
 
     @Test
     fun `should calculate total winnings`() {
-        val cards = CamelCards("32T3K 765\n" +
-                "T55J5 684\n" +
-                "KK677 28\n" +
-                "KTJJT 220\n" +
-                "QQQJA 483")
+        val cards = CamelCards("2345A 1\n" +
+                "Q2KJJ 13\n" +
+                "Q2Q2Q 19\n" +
+                "T3T3J 17\n" +
+                "T3Q33 11\n" +
+                "2345J 3\n" +
+                "J345A 2\n" +
+                "32T3K 5\n" +
+                "T55J5 29\n" +
+                "KK677 7\n" +
+                "KTJJT 34\n" +
+                "QQQJA 31\n" +
+                "JJJJJ 37\n" +
+                "JAAAA 43\n" +
+                "AAAAJ 59\n" +
+                "AAAAA 61\n" +
+                "2AAAA 23\n" +
+                "2JJJJ 53\n" +
+                "JJJJ2 41")
         val result = cards.getTotalWinnings()
-        assertEquals(6440, result)
+        assertEquals(6592, result)
     }
 
 }

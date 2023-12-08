@@ -7,7 +7,7 @@ class CamelCards(input: String = "") {
     private val singlePairHand = Regex(".*(.)\\1+")
     private val twoPairHand = Regex(".*(.)\\1{1}.*(.)\\2{1}")
     private val threeOfAKindMatch = Regex(".*(.)\\1{2}")
-    private val fullHouseHand = Regex("(.)\\1{1}(.)\\2{2}|(.)\\1{2}(.)\\2{1}")
+    private val fullHouseHand = Regex("(.)\\1{1}(.)\\2{2}|(.)\\3{2}(.)\\4{1}")
     private val fourOfAKindHand = Regex(".*(.)\\1{3}")
     private val fiveOfAKindHand = Regex(".*(.)\\1{4}")
 
@@ -51,10 +51,11 @@ class CamelCards(input: String = "") {
         return hands.sortedWith(sortByRank)
     }
 
-    fun getTotalWinnings(): Int {
+    fun getTotalWinnings(): Long {
         return getRankedOrder()
             .mapIndexed { index, cardHand ->
-                (index + 1) * cardHand.bid
+//                println("${cardHand.hand}: ${cardHand.bid.toLong()} * ${index + 1} = ${cardHand.bid.toLong() * (index + 1)}")
+                (index + 1) * cardHand.bid.toLong()
             }
             .sum()
     }
