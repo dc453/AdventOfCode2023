@@ -50,8 +50,9 @@ fun main(args: Array<String>) {
 
     // Day 7
     val day7Input = File("src/main/inputs/Day07.txt").readText()
-    val camelCards = CamelCards(day7Input)
-    val day7Part1 = camelCards.getTotalWinnings()
+    val day7Part1 = CamelCards(day7Input).getTotalWinnings()
     println("Day 7, part 1: $day7Part1")
+    val day7Part2 = CamelCards(day7Input, true).getTotalWinnings()
+    println("Day 7, part 2: $day7Part2")
 
 }
