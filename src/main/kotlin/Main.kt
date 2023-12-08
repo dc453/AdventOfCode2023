@@ -48,4 +48,10 @@ fun main(args: Array<String>) {
     val day6Part2 = BoatRaces(day6Input, true).getMarginOfError()
     println("Day 6, part 2: $day6Part2")
 
+    // Day 7
+    val day7Input = File("src/main/inputs/Day07.txt").readText()
+    val camelCards = CamelCards(day7Input)
+    val day7Part1 = camelCards.getTotalWinnings()
+    println("Day 7, part 1: $day7Part1")
+
 }
